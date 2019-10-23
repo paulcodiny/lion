@@ -499,7 +499,6 @@ export class OverlayController {
         this._contentNodeWrapper.style.width = referenceWidth;
         break;
       default:
-        this._contentNodeWrapper.style.minWidth = referenceWidth;
     }
   }
 
