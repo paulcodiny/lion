@@ -1,5 +1,6 @@
 import { html, LitElement, css } from 'lit';
 import { browserDetection, DisabledWithTabIndexMixin, uuid } from '@lion/ui/core.js';
+import { SSRLitElement } from "../../../SSRLitElement.js";
 
 const isKeyboardClickEvent = (/** @type {KeyboardEvent} */ e) => e.key === ' ' || e.key === 'Enter';
 const isSpaceKeyboardClickEvent = (/** @type {KeyboardEvent} */ e) => e.key === ' ';
@@ -26,7 +27,7 @@ const isSpaceKeyboardClickEvent = (/** @type {KeyboardEvent} */ e) => e.key === 
  * - When type="reset|submit" should be supported, use LionButtonReset.
  * - When implicit form submission should be supported on top, use LionButtonSubmit.
  */
-export class LionButton extends DisabledWithTabIndexMixin(LitElement) {
+export class LionButton extends DisabledWithTabIndexMixin(SSRLitElement) {
   static get properties() {
     return {
       active: { type: Boolean, reflect: true },

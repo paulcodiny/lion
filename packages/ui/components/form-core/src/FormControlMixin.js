@@ -530,7 +530,7 @@ const FormControlMixinImplementation = superclass =>
      * @protected
      */
     _inputGroupPrefixTemplate() {
-      return !Array.from(this.children).find(child => child.slot === 'prefix')
+      return !this.children || !Array.from(this.children).find(child => child.slot === 'prefix')
         ? nothing
         : html`
             <div class="input-group__prefix">
@@ -557,7 +557,7 @@ const FormControlMixinImplementation = superclass =>
      * @protected
      */
     _inputGroupSuffixTemplate() {
-      return !Array.from(this.children).find(child => child.slot === 'suffix')
+      return !this.children || !Array.from(this.children).find(child => child.slot === 'suffix')
         ? nothing
         : html`
             <div class="input-group__suffix">

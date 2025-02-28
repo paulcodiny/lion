@@ -1,7 +1,7 @@
 import { dedupeMixin } from '@open-wc/dedupe-mixin';
 
 const windowWithOptionalPolyfill =
-  /** @type {Window & typeof globalThis & {applyFocusVisiblePolyfill?: function}} */ (window);
+  /** @type {Window & typeof globalThis & {applyFocusVisiblePolyfill?: function}} */ (typeof window !== 'undefined' ? window : {});
 const polyfilledNodes = new WeakMap();
 
 /**
