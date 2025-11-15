@@ -1,0 +1,18 @@
+{
+  "line-length": {
+    "line_length": -1
+  },
+  "fenced-code-language": false,
+  "no-inline-html": false,
+  "first-line-h1": false,
+  "single-h1": {
+    "front_matter_title": ""
+  },
+  "no-trailing-punctuation": {
+    "punctuation": ".,;。，；：！"
+  },
+  "ol-prefix": false,
+  "MD025": {
+    "front_matter_title": ""
+  }  
+}
