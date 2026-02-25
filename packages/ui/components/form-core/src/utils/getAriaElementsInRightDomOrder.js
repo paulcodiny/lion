@@ -1,9 +1,9 @@
 /* eslint-disable no-bitwise */
-const moveDownConditions = [
+const moveDownConditions = typeof Node !== 'undefined' ? [
   Node.DOCUMENT_POSITION_PRECEDING,
   Node.DOCUMENT_POSITION_CONTAINS,
   Node.DOCUMENT_POSITION_CONTAINS | Node.DOCUMENT_POSITION_PRECEDING,
-];
+] : [];
 
 /**
  * Let the order of adding ids to aria element by DOM order, so that the screen reader

@@ -1,5 +1,6 @@
-import { html, LitElement, css } from 'lit';
+import { html, css } from 'lit';
 import { DisabledWithTabIndexMixin } from '@lion/ui/core.js';
+import { SSRLitElement } from "../../../SSRLitElement.js";
 
 const isKeyboardClickEvent = (/** @type {KeyboardEvent} */ e) => e.key === ' ' || e.key === 'Enter';
 const isSpaceKeyboardClickEvent = (/** @type {KeyboardEvent} */ e) => e.key === ' ';
@@ -30,7 +31,7 @@ const isSpaceKeyboardClickEvent = (/** @type {KeyboardEvent} */ e) => e.key === 
  *
  * @customElement lion-button
  */
-export class LionButton extends DisabledWithTabIndexMixin(LitElement) {
+export class LionButton extends DisabledWithTabIndexMixin(SSRLitElement) {
   static get properties() {
     return {
       active: { type: Boolean, reflect: true },
