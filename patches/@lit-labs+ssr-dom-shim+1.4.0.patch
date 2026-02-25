@@ -1,0 +1,21 @@
+diff --git a/node_modules/@lit-labs/ssr-dom-shim/index.js b/node_modules/@lit-labs/ssr-dom-shim/index.js
+index dd0065c..bacb01f 100644
+--- a/node_modules/@lit-labs/ssr-dom-shim/index.js
++++ b/node_modules/@lit-labs/ssr-dom-shim/index.js
+@@ -160,11 +160,11 @@ class CustomElementRegistry {
+                     `the name "${name}" has already been used with this registry`);
+             }
+         }
+-        if (this.__reverseDefinitions.has(ctor)) {
+-            throw new Error(`Failed to execute 'define' on 'CustomElementRegistry': ` +
+-                `the constructor has already been used with this registry for the ` +
+-                `tag name ${this.__reverseDefinitions.get(ctor)}`);
+-        }
++        // if (this.__reverseDefinitions.has(ctor)) {
++        //     throw new Error(`Failed to execute 'define' on 'CustomElementRegistry': ` +
++        //         `the constructor has already been used with this registry for the ` +
++        //         `tag name ${this.__reverseDefinitions.get(ctor)}`);
++        // }
+         // Provide tagName and localName for the component.
+         ctor.__localName = name;
+         this.__definitions.set(name, {

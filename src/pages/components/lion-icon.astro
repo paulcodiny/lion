@@ -1,0 +1,37 @@
+---
+import '../../components/my-lion-icon-component.js';
+---
+Server:
+<my-lion-icon-component my-attr></my-lion-icon-component>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--Client-side:-->
+<!--<div>-->
+<!--  Button: (@click="${() => console.log('Click...')}" only works via Lit, so client-side tag "lion-button" does not do-->
+<!--  anything)-->
+<!--  <lion-button skip-ssr @click="${() => console.log('Click...')}">Clickable button</lion-button>-->
+<!--  <br/>-->
+<!--  Icon:-->
+<!--  <lion-icon skip-ssr icon-id="lion-portal:portal:home"></lion-icon>-->
+<!--  <br>-->
+<!--  My Component:-->
+<!--  <my-lion-icon-component skip-ssr></my-lion-icon-component>-->
+<!--</div>-->
+<script>
+  // todo: current problem is that onClick in the button is not working
+  // steps so far: re-ordered files to executed scoped-custom-elements-registry and lit-element-hydrate-support first
+  // updated @lit-labs/ssr-client to accept empty string for defer-hydration attribute to trigger connectedCallback
+  // defer-hydration will mess up the rendering, so it should not be present on the element
+  // much debugging was done in node_modules/@lit-labs/ssr/lib/render-value.js
+  // because this is where we need to pass scoped custom registry
+  // at the moment everything is commented out (search for "***")
+  import '@webcomponents/scoped-custom-element-registry?test=1';
+  import '@lit-labs/ssr-client/lit-element-hydrate-support.js?test=2';
+  import '../../components/my-lion-icon-component.js';
+  // import '@lion/ui/define/lion-icon.js';
+</script>
+

@@ -30,7 +30,8 @@
     "./pagination-translations/*": "./components/pagination/translations/*",
     "./progress-indicator-translations/*": "./components/progress-indicator/translations/*",
     "./validate-messages-translations/*": "./components/validate-messages/translations/*",
-    "./docs/*": "./docs/*"
+    "./docs/*": "./docs/*",
+    "./renderer.js": "./renderer.js"
   },
   "files": [
     "*.js",

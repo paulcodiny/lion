@@ -50,6 +50,7 @@
     "packages-node/*"
   ],
   "dependencies": {
+    "@lit-labs/ssr": "^4.0.0",
     "lit": "^3.2.1"
   },
   "devDependencies": {
