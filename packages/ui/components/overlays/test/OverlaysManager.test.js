@@ -46,7 +46,7 @@ describe('OverlaysManager', () => {
     // @ts-ignore [allow-private-in-test]
     expect(mngr.__shownList).to.be.empty;
     // @ts-ignore [allow-private-in-test]
-    expect(mngr.__siblingsInert).to.be.false;
+    expect(mngr._siblingsInert).to.be.false;
   });
 
   it('can add/remove controllers', () => {
@@ -159,6 +159,22 @@ describe('OverlaysManager', () => {
         );
         await dialog.hide();
         expect(Array.from(document.body.classList)).to.not.contain('overlays-scroll-lock-ios-fix');
+        expect(Array.from(document.documentElement.classList)).to.not.contain(
+          'overlays-scroll-lock-ios-fix',
+        );
+      });
+      it('remove class "overlays-scroll-lock-ios-fix" after teardown', async () => {
+        mockIOS();
+        const dialog = new OverlayController({ ...defaultOptions, preventsScroll: true }, mngr);
+        await dialog.show();
+
+        await dialog.teardown();
+
+        expect(
+          Array.from(document.body.classList).filter(cls =>
+            ['overlays-scroll-lock', 'overlays-scroll-lock-ios-fix'].includes(cls),
+          ),
+        ).to.be.empty;
         expect(Array.from(document.documentElement.classList)).to.not.contain(
           'overlays-scroll-lock-ios-fix',
         );

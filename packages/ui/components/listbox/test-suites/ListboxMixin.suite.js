@@ -1,4 +1,5 @@
 import { LitElement } from 'lit';
+import { ref } from 'lit/directives/ref.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { Required } from '@lion/ui/form-core.js';
 import { LionOptions } from '@lion/ui/listbox.js';
@@ -17,6 +18,7 @@ import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
 import { getListboxMembers } from '../../../exports/listbox-test-helpers.js';
 import { browserDetection } from '../../core/src/browserDetection.js';
+import { getCachedFixture } from '../../core/test-helpers/getCachedFixture.js';
 
 /**
  * @typedef {import('../src/LionListbox.js').LionListbox} LionListbox
@@ -588,6 +590,55 @@ export function runListboxMixinSuite(customConfig = {}) {
         expect(el.activeIndex).to.equal(1);
         el.reset();
         expect(el.activeIndex).to.equal(-1);
+      });
+
+      it('clears modelValue on clear()', async () => {
+        const el = await fixture(html`
+          <${tag} has-no-default-selected>
+            <${optionTag} .choiceValue=${'10'}>Item 1</${optionTag}>
+            <${optionTag} .choiceValue=${'20'}>Item 2</${optionTag}>
+          </${tag}>
+        `);
+
+        el.setCheckedIndex(0);
+        await el.updateComplete;
+        expect(el.modelValue).to.deep.equal('10');
+
+        el.clear();
+        await el.updateComplete;
+        expect(el.modelValue).to.equal('');
+      });
+
+      it('clears modelValue on clear() when multiple-choice', async () => {
+        const el = await fixture(html`
+          <${tag} has-no-default-selected multiple-choice>
+            <${optionTag} .choiceValue=${'10'}>Item 1</${optionTag}>
+            <${optionTag} .choiceValue=${'20'}>Item 2</${optionTag}>
+          </${tag}>
+        `);
+        el.setCheckedIndex(0);
+        await el.updateComplete;
+        expect(el.modelValue).to.eql(['10']);
+
+        el.clear();
+        expect(el.modelValue).to.eql([]);
+      });
+
+      it('keeps interaction states on clear()', async () => {
+        const el = await fixture(html`
+          <${tag} has-no-default-selected>
+            <${optionTag} .choiceValue=${'10'}>Item 1</${optionTag}>
+            <${optionTag} .choiceValue=${'20'}>Item 2</${optionTag}>
+          </${tag}>
+        `);
+
+        el.setCheckedIndex(0);
+        await el.updateComplete;
+        expect(el.dirty).to.equal(true);
+
+        el.clear();
+        await el.updateComplete;
+        expect(el.dirty).to.equal(true);
       });
     });
 
@@ -1547,8 +1598,12 @@ export function runListboxMixinSuite(customConfig = {}) {
         expect(el.querySelector('[role=listbox]')).to.equal(_listboxNode);
 
         expect(el.formElements.length).to.equal(2);
-        expect(_listboxNode.children.length).to.equal(2);
-        expect(_listboxNode.children[0].tagName).to.equal(cfg.optionTagString.toUpperCase());
+        // When we use ScopedStylesController, lisboxNode can have style tag along with options
+        const childrenOtherThanStyle = Array.from(_listboxNode.children).filter(
+          child => child.nodeName !== 'STYLE',
+        );
+        expect(childrenOtherThanStyle.length).to.equal(2);
+        expect(childrenOtherThanStyle[0].tagName).to.equal(cfg.optionTagString.toUpperCase());
       });
     });
 
@@ -1734,6 +1789,20 @@ export function runListboxMixinSuite(customConfig = {}) {
         el.clearOptions();
         await el.updateComplete;
         expect(spy).to.have.been.calledTwice;
+      });
+
+      it('does not calls "_onListboxContentChanged" during connect and disconnected', async () => {
+        const renderEl = /** @param {import('lit/directives/ref.js').Ref<any>} refObj */ refObj =>
+          html`<${wrappingTag} ${ref(refObj)}></${wrappingTag}>`;
+        const { el, show, hide } = await getCachedFixture(renderEl);
+        const typedEl = /** @type {MyEl} */ (el);
+        await typedEl?.listbox.registrationComplete;
+        // @ts-ignore [allow-protected] in test
+        const spy = sinon.spy(typedEl.listbox, '_onListboxContentChanged');
+        await hide();
+        await show();
+
+        expect(spy).not.to.have.been.called;
       });
     });
   });

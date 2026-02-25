@@ -1,0 +1,11 @@
+<div class="announcement-bar">
+   <p>A new portal is coming! Check out <a href="/about/astro">the technical release of our Astro portal</a></p>
+</div>
+
+<header id="main-header">
+  <div class="content-area">
+    {% for blockName, blockPath in _joiningBlocks.header %}
+      {% include blockPath %}
+    {% endfor %}
+  </div>
+</header>

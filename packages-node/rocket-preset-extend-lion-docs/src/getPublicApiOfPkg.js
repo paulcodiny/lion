@@ -1,7 +1,26 @@
 import path from 'path';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { readFile } from 'fs/promises';
+// @ts-ignore
 import { init, parse } from 'es-module-lexer';
 import glob from 'glob';
+
+/**
+ * Get export specifiers, declared in a js file given with `filePath`
+ * @see {@link https://www.npmjs.com/package/es-module-lexer}
+ * @param {string} absFilePath
+ * @returns {Promise<string[]>}
+ */
+export const getExportSpecifiersByFile = async absFilePath => {
+  await init;
+  const exportFile = await readFile(absFilePath, 'utf-8');
+  // eslint-disable-next-line
+  const [_, exportsObj] = parse(exportFile);
+  const exports = exportsObj.map(e => e.n ?? e.ln);
+
+  // @ts-ignore
+  return exports;
+};
 
 await init;
 
@@ -45,8 +64,7 @@ export async function getPublicApiOfPkg(pkgJsonPath) {
           const pkgEntryPoint = `${name}/${pkgEntryPointPath}`;
 
           if (entryPointFile.endsWith('.js')) {
-            const src = await readFile(entryPointFile, 'utf8');
-            const [, exports] = parse(src);
+            const exports = await getExportSpecifiersByFile(entryPointFile);
             publicApi.entryPoints.push({
               entry: pkgExportDefinition,
               name: pkgEntryPoint,
@@ -61,8 +79,7 @@ export async function getPublicApiOfPkg(pkgJsonPath) {
       const pkgEntryPointPath = pkgExportDefinition === '.' ? '' : pkgExportDefinition;
       const pkgEntryPoint = pkgEntryPointPath ? `${name}/${pkgEntryPointPath}` : name;
       if (entryPointFilePath.endsWith('.js')) {
-        const src = await readFile(entryPointFilePath, 'utf8');
-        const [, exports] = parse(src);
+        const exports = await getExportSpecifiersByFile(entryPointFilePath);
         publicApi.entryPoints.push({
           entry: pkgExportDefinition,
           name: pkgEntryPoint,

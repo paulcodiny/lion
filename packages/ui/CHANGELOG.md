@@ -1,5 +1,67 @@
 # @lion/ui
 
+## 0.16.1
+
+### Patch Changes
+
+- 33d253c: [overlays] make OverlaysManager#\_siblingsInert protected
+
+## 0.16.0
+
+### Minor Changes
+
+- b09b1af: [overlays] update trapskeyboardfocus feature to use native dialog
+
+  [trapskeyboardfocus](https://lion.js.org/fundamentals/systems/overlays/configuration/#trapskeyboardfocus) feature is updated to use native Dialog for trapping focus. It bring some breaking changes:
+  - Endpoints removed: `containFocus`, `rotateFocus` from `@lion/ui/overlays.js`
+  - Undocumented protected configuration property for Overlays `_noDialogEl` is removed. It allowed to use `div` element instead of `dialog` for rendering dialogs
+  - `OverlayController#enableTrapsKeyboardFocus`, `OverlayController#disableTrapsKeyboardFocus` have been removed
+  - `OverlaysManager#disableTrapsKeyboardFocusForAll`, `OverlaysManager#informTrapsKeyboardFocusGotEnabled`, `OverlaysManager#informTrapsKeyboardFocusGotDisabled` have been removed
+
+  The change in the behaviour from UX point of view:
+  The main difference is that the navite modal dialog does not trap the focus inside the dialog entirely. It allows to switch from the dialog to the browser's panels. It's done by design to improve a11y expirience and let users switch browser's tab as example if they want so.
+
+### Patch Changes
+
+- d39c6b7: [overlays] improve hide behavior after teardown and registration check
+
+## 0.15.5
+
+### Patch Changes
+
+- 354ae42: update lion-switch model-value-changed event documentation
+- 557045b: [collapsible] remove unneeded aria-labelledby on the contentNode
+- 799b690: fix(ChoiceGroupMixin): initialModelValue is not managed properly
+- 173b2b9: fix(InputTelephone): spanish allCountries label is not right
+
+## 0.15.4
+
+### Patch Changes
+
+- 7172215: [input-file]: add missing translations and add support for Indonesian
+- 9afb769: Make ListboxMixin works well with ScopedStylesController when cache is used
+- 4018c28: remove overlay-scroll-lock properly after overlay teardown
+- d835665: The currency for Bulgaria (BG) is now set to Euro(EUR) instead of Bulgarian Lev(BGN)
+- 44205ee: [input-amount] allow pasting value with currency correctly
+- b473e4f: [listbox]: remove resetInteractionStates from clear function
+
+## 0.15.3
+
+### Patch Changes
+
+- 4154801: [validation-message] remove the letter T from IsDateDisabled in Italian message
+- 579e42b: fix(LionInputStepper): improve handling of decimal step values and alignment closes #2615
+- 45af9dc: feat(LionInputStepper): implement self-destructing output content for value display
+  1. from <div class="input-stepper__value">${this.__valueText}</div> to <output class="input-stepper__value"  for="..">${this.\_\_valueText}</output>
+  2. remove the \_onEnterButton() and \_onLeaveButton() logic.
+
+- 9105f50: fix(ValidateMixin): no dispatch validators on readOnly form items
+- 37b24e5: [form-core] improve validation feedback message for screen readers to make it one sentence.
+- b64f520: [lion-input-stepper]: add component label to aria-label of increase and decrease buttons
+- ef0af0e: fix(pagination): remove unnecessary ellipsis when count equals visiblePages + 1
+
+  Fixed issue where LionPagination component incorrectly displayed ellipsis when the total page count was exactly one more than the visible pages setting (e.g., showing [1, 2, 3, 4, 5, '...', 6] instead of [1, 2, 3, 4, 5, 6] when visiblePages=5 and count=6).
+
 ## 0.15.2
 
 ### Patch Changes

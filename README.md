@@ -44,7 +44,7 @@ They provide an unopinionated, white-label layer that can be extended to your ow
 - **High Performance:** Focused on great performance in all relevant browsers with a minimal number of dependencies.
 - **Accessibility:** Aimed at compliance with the WCAG 2.2 AA standard to create components that are accessible for everybody.
 - **Flexibility:** Provides solutions through Web Components and JavaScript classes which can be used, adopted and extended to fit all needs.
-- **Modern Code:** Lion is distributes as pure es modules.
+- **Modern Code:** Lion is distributed as pure es modules.
 - **Exposes functions/classes and Web Components:** Ships a functionality in it's most appropriate form.
 
 > Note: Our demos may look a little bland but that is on purpose. They only come with functional stylings.
@@ -54,6 +54,35 @@ They provide an unopinionated, white-label layer that can be extended to your ow
   <a href="https://lion.js.org/guides/"><strong>Explore the Lion Guides&nbsp;&nbsp;▶</strong></a>
 </p>
 
+<details>
+<summary><h2>Table of Contents</h2></summary>
+<ul>
+  <li><a href="#astro-migration"> Astro migration </a>
+  <ul>
+   <li><a href="#astro-how-to"> Astro how to </a></li>
+   <li><a href="#issues-which-are-not-caused-by-the-migration-not-to-be-fixed-now"> Issues which are not caused by migration </a></li>
+  </ul>
+ </li>
+ <li><a href="#how-to-install"> Installation </a></li>
+ <li><a href="#how-to-use"> How to use </a>
+  <ul>
+   <li><a href="#extend-a-web-component"> Extend a web component </a></li>
+   <li><a href="#use-a-javascript-system"> Use a JavaScript system </a></li>
+   <li><a href="#use-a-web-component"> Use a Web Component </a></li>
+  </ul>
+ </li>
+ <li><a href="#issues"> Issues </a></li>
+ <li><a href="#feature-requests"> Feature request </a></li>
+ <li><a href="#content"> Content </a></li>
+ <li><a href="#technologies"> Technologies </a></li>
+ <li><a href="#rationale"> Rationale </a></li>
+ <li><a href="#coding-guidelines"> Coding guidelines </a></li>
+ <li><a href="#how-to-contribute"> How to contribute </a></li>
+ <li><a href="#site-deployment"> Site deployment </a></li>
+ <li><a href="#content"> Contact </a></li>
+</ul>
+</details>
+
 ## Astro migration
 
 - Keep using `/docs` on the root level as we used it in the `master` branch. The documentation is copied into Astro related directories on `npm run start` and when when anything in `/docs` is updated.
@@ -62,7 +91,7 @@ They provide an unopinionated, white-label layer that can be extended to your ow
 
 ### Astro how to
 
-- To start in dev mode run `nmm run start`
+- To start in dev mode run `npm run start`
 - To start in production mode:
   - Run `npm run build`
   - Run `npm run preview`

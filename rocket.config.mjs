@@ -32,6 +32,10 @@ export default {
   presets: [rocketLaunch(), rocketBlog()],
   eleventy(eleventyConfig) {
     eleventyConfig.setUseGitIgnore(false);
+    eleventyConfig.addPassthroughCopy('CNAME');
+  },
+  checkLinks: {
+    ignoreLinkPatterns: ['**/astro'],
   },
   absoluteBaseUrl: absoluteBaseUrlNetlify('http://localhost:8080'),
   setupUnifiedPlugins: [
