@@ -1,0 +1,37 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="tooltip-ssr">Tooltip: SSR</h1>
+
+  <h2>Basic tooltip</h2>
+  <div style="margin: 50px;">
+    <lion-tooltip>
+      <button slot="invoker">Hover me</button>
+      <div slot="content">This is a tooltip</div>
+    </lion-tooltip>
+  </div>
+
+  <h2>Icon button with label relation</h2>
+  <div style="margin: 50px;">
+    <lion-tooltip .config=${{ invokerRelation: 'label' }}>
+      <button slot="invoker">📅</button>
+      <div slot="content">Agenda</div>
+    </lion-tooltip>
+  </div>
+
+  <h2>With arrow</h2>
+  <div style="margin: 50px;">
+    <lion-tooltip has-arrow>
+      <button slot="invoker">Hover me</button>
+      <div slot="content">Tooltip with arrow</div>
+    </lion-tooltip>
+  </div>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-tooltip.js';
+  </script>
+</MainLayout>
+

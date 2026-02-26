@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="input-datepicker-ssr">Input Datepicker: SSR</h1>
+
+  <h2>Basic input datepicker</h2>
+  <lion-input-datepicker label="Choose a date"></lion-input-datepicker>
+
+  <h2>With calendar heading</h2>
+  <lion-input-datepicker label="Date" calendar-heading="Pick a date"></lion-input-datepicker>
+
+  <h2>Disabled input datepicker</h2>
+  <lion-input-datepicker label="Date" disabled></lion-input-datepicker>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-input-datepicker.js';
+  </script>
+</MainLayout>
+

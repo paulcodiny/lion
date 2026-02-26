@@ -1,0 +1,35 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="combobox-ssr">Combobox: SSR</h1>
+
+  <h2>Basic combobox</h2>
+  <lion-combobox name="combo" label="Choose a fruit">
+    <lion-option .choiceValue=${"Apple"}>Apple</lion-option>
+    <lion-option .choiceValue=${"Banana"}>Banana</lion-option>
+    <lion-option .choiceValue=${"Carrot"}>Carrot</lion-option>
+    <lion-option .choiceValue=${"Orange"}>Orange</lion-option>
+  </lion-combobox>
+
+  <h2>No required option match</h2>
+  <lion-combobox name="search" label="Search" .requireOptionMatch=${false}>
+    <lion-option .choiceValue=${"Apple"}>Apple</lion-option>
+    <lion-option .choiceValue=${"Banana"}>Banana</lion-option>
+    <lion-option .choiceValue=${"Carrot"}>Carrot</lion-option>
+  </lion-combobox>
+
+  <h2>Disabled combobox</h2>
+  <lion-combobox name="combo2" label="Choose a fruit" disabled>
+    <lion-option .choiceValue=${"Apple"}>Apple</lion-option>
+    <lion-option .choiceValue=${"Banana"}>Banana</lion-option>
+  </lion-combobox>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-combobox.js';
+    import '@lion/ui/define/lion-option.js';
+  </script>
+</MainLayout>
+

@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="input-amount-ssr">Input Amount: SSR</h1>
+
+  <h2>Basic input amount</h2>
+  <lion-input-amount label="Amount"></lion-input-amount>
+
+  <h2>With currency</h2>
+  <lion-input-amount label="Price" currency="USD"></lion-input-amount>
+
+  <h2>With currency (EUR)</h2>
+  <lion-input-amount label="Price" currency="EUR"></lion-input-amount>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-input-amount.js';
+  </script>
+</MainLayout>
+

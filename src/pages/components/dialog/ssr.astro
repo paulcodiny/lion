@@ -1,0 +1,32 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="dialog-ssr">Dialog: SSR</h1>
+
+  <h2>Basic dialog</h2>
+  <lion-dialog>
+    <button slot="invoker">Open Dialog</button>
+    <div slot="content">
+      <p>This is a dialog content</p>
+      <button type="button">Close</button>
+    </div>
+  </lion-dialog>
+
+  <h2>Alert dialog</h2>
+  <lion-dialog is-alert-dialog>
+    <button slot="invoker">Reset</button>
+    <div slot="content">
+      <p>Are you sure you want to reset?</p>
+      <button type="button">Yes</button>
+      <button type="button">No</button>
+    </div>
+  </lion-dialog>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-dialog.js';
+  </script>
+</MainLayout>
+

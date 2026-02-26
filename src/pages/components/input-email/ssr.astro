@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="input-email-ssr">Input Email: SSR</h1>
+
+  <h2>Basic input email</h2>
+  <lion-input-email label="Email"></lion-input-email>
+
+  <h2>Disabled input email</h2>
+  <lion-input-email label="Email" disabled></lion-input-email>
+
+  <h2>With help text</h2>
+  <lion-input-email label="Email" help-text="Enter a valid email address"></lion-input-email>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-input-email.js';
+  </script>
+</MainLayout>
+

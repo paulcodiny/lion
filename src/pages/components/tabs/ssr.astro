@@ -1,0 +1,43 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="tabs-ssr">Tabs: SSR</h1>
+
+  <h2>Basic tabs</h2>
+  <lion-tabs>
+    <button slot="tab">Info</button>
+    <p slot="panel">Info page with lots of information about us.</p>
+    <button slot="tab">Work</button>
+    <p slot="panel">Work page that showcases our work.</p>
+    <button slot="tab">About</button>
+    <p slot="panel">About page with information about our company.</p>
+  </lion-tabs>
+
+  <h2>With selected index</h2>
+  <lion-tabs .selectedIndex=${1}>
+    <button slot="tab">Tab 1</button>
+    <p slot="panel">Panel 1</p>
+    <button slot="tab">Tab 2</button>
+    <p slot="panel">Panel 2 (selected)</p>
+    <button slot="tab">Tab 3</button>
+    <p slot="panel">Panel 3</p>
+  </lion-tabs>
+
+  <h2>With disabled tab</h2>
+  <lion-tabs>
+    <button slot="tab">Tab 1</button>
+    <p slot="panel">Panel 1</p>
+    <button slot="tab" disabled>Tab 2 (disabled)</button>
+    <p slot="panel">Panel 2</p>
+    <button slot="tab">Tab 3</button>
+    <p slot="panel">Panel 3</p>
+  </lion-tabs>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-tabs.js';
+  </script>
+</MainLayout>
+

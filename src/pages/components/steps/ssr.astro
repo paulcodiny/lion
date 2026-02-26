@@ -1,0 +1,32 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="steps-ssr">Steps: SSR</h1>
+
+  <h2>Basic steps</h2>
+  <lion-steps>
+    <lion-step initial-step>
+      <p>Step 1: Welcome</p>
+      <button type="button">Next</button>
+    </lion-step>
+    <lion-step>
+      <p>Step 2: Information</p>
+      <button type="button">Previous</button>
+      <button type="button">Next</button>
+    </lion-step>
+    <lion-step>
+      <p>Step 3: Finish</p>
+      <button type="button">Previous</button>
+      <button type="button">Finish</button>
+    </lion-step>
+  </lion-steps>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-steps.js';
+    import '@lion/ui/define/lion-step.js';
+  </script>
+</MainLayout>
+

@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="progress-indicator-ssr">Progress Indicator: SSR</h1>
+
+  <h2>Basic progress indicator</h2>
+  <lion-progress-indicator></lion-progress-indicator>
+
+  <h2>With value (determinate)</h2>
+  <lion-progress-indicator value="50"></lion-progress-indicator>
+
+  <h2>With different value</h2>
+  <lion-progress-indicator value="75"></lion-progress-indicator>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-progress-indicator.js';
+  </script>
+</MainLayout>
+

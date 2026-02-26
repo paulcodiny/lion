@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="input-tel-ssr">Input Tel: SSR</h1>
+
+  <h2>Basic input tel</h2>
+  <lion-input-tel label="Phone number"></lion-input-tel>
+
+  <h2>Disabled input tel</h2>
+  <lion-input-tel label="Phone number" disabled></lion-input-tel>
+
+  <h2>With help text</h2>
+  <lion-input-tel label="Phone number" help-text="Enter a valid phone number"></lion-input-tel>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-input-tel.js';
+  </script>
+</MainLayout>
+

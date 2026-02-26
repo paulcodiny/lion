@@ -1,0 +1,40 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="collapsible-ssr">Collapsible: SSR</h1>
+
+  <h2>Basic collapsible</h2>
+  <lion-collapsible>
+    <button slot="invoker">More about cars</button>
+    <div slot="content">
+      Most definitions of cars say that they run primarily on roads, seat one to eight people, have
+      four tires, and mainly transport people rather than goods.
+    </div>
+  </lion-collapsible>
+
+  <h2>Default open</h2>
+  <lion-collapsible opened>
+    <button slot="invoker">More about trains</button>
+    <div slot="content">
+      A train is a form of rail transport consisting of a series of connected vehicles
+      that generally run along a railroad track to transport passengers or cargo.
+    </div>
+  </lion-collapsible>
+
+  <h2>Multiple collapsibles</h2>
+  <lion-collapsible>
+    <button slot="invoker">More about planes</button>
+    <div slot="content">
+      An airplane is a powered, fixed-wing aircraft that is propelled forward by thrust
+      from a jet engine or propeller.
+    </div>
+  </lion-collapsible>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-collapsible.js';
+  </script>
+</MainLayout>
+

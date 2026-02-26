@@ -1,0 +1,43 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="select-ssr">Select: SSR</h1>
+
+  <h2>Basic select</h2>
+  <lion-select name="favoriteColor" label="Favorite color">
+    <select slot="input">
+      <option selected value>Please select</option>
+      <option value="red">Red</option>
+      <option value="hotpink">Hotpink</option>
+      <option value="teal">Teal</option>
+    </select>
+  </lion-select>
+
+  <h2>Disabled select</h2>
+  <lion-select name="favoriteColor2" label="Favorite color" disabled>
+    <select slot="input">
+      <option selected value>Please select</option>
+      <option value="red">Red</option>
+      <option value="hotpink">Hotpink</option>
+      <option value="teal">Teal</option>
+    </select>
+  </lion-select>
+
+  <h2>Disabled option</h2>
+  <lion-select name="favoriteColor3" label="Favorite color">
+    <select slot="input">
+      <option selected value>Please select</option>
+      <option value="red">Red</option>
+      <option value="hotpink" disabled>Hotpink</option>
+      <option value="teal">Teal</option>
+    </select>
+  </lion-select>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-select.js';
+  </script>
+</MainLayout>
+

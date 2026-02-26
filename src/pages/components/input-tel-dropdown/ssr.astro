@@ -1,0 +1,26 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="input-tel-dropdown-ssr">Input Tel Dropdown: SSR</h1>
+
+  <h2>Basic input tel dropdown</h2>
+  <lion-input-tel-dropdown label="Select region via dropdown" name="phoneNumber"></lion-input-tel-dropdown>
+
+  <h2>With allowed regions</h2>
+  <lion-input-tel-dropdown
+    label="Select region via dropdown"
+    name="phoneNumber2"
+    allowed-regions="['NL', 'DE', 'GB']"
+  ></lion-input-tel-dropdown>
+
+  <h2>Disabled</h2>
+  <lion-input-tel-dropdown label="Select region via dropdown" name="phoneNumber3" disabled></lion-input-tel-dropdown>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-input-tel-dropdown.js';
+  </script>
+</MainLayout>
+

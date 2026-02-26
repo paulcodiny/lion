@@ -1,0 +1,20 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="icon-ssr">Icon: SSR</h1>
+
+  <h2>Basic icons</h2>
+  <p>Note: Icons require icon sets to be loaded. SSR may not display icons correctly without proper setup.</p>
+
+  <lion-icon icon-id="lion:misc:arrowLeft" aria-label="Arrow left"></lion-icon>
+  <lion-icon icon-id="lion:misc:arrowRight" aria-label="Arrow right"></lion-icon>
+  <lion-icon icon-id="lion:misc:check" aria-label="Check"></lion-icon>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-icon.js';
+  </script>
+</MainLayout>
+

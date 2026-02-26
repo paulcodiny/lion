@@ -1,0 +1,35 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="radio-group-ssr">Radio Group: SSR</h1>
+
+  <h2>Basic radio group</h2>
+  <lion-radio-group name="dinos" label="What are your favourite dinosaurs?">
+    <lion-radio label="allosaurus" .choiceValue=${"allosaurus"}></lion-radio>
+    <lion-radio label="brontosaurus" .choiceValue=${"brontosaurus"}></lion-radio>
+    <lion-radio label="diplodocus" .choiceValue=${"diplodocus"}></lion-radio>
+  </lion-radio-group>
+
+  <h2>Pre-selected option</h2>
+  <lion-radio-group name="dinos2" label="What are your favourite dinosaurs?">
+    <lion-radio label="allosaurus" .choiceValue=${"allosaurus"}></lion-radio>
+    <lion-radio label="brontosaurus" .choiceValue=${"brontosaurus"} checked></lion-radio>
+    <lion-radio label="diplodocus" .choiceValue=${"diplodocus"}></lion-radio>
+  </lion-radio-group>
+
+  <h2>Disabled radio group</h2>
+  <lion-radio-group name="dinos3" label="What are your favourite dinosaurs?" disabled>
+    <lion-radio label="allosaurus" .choiceValue=${"allosaurus"}></lion-radio>
+    <lion-radio label="brontosaurus" .choiceValue=${"brontosaurus"}></lion-radio>
+    <lion-radio label="diplodocus" .choiceValue=${"diplodocus"}></lion-radio>
+  </lion-radio-group>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-radio-group.js';
+    import '@lion/ui/define/lion-radio.js';
+  </script>
+</MainLayout>
+

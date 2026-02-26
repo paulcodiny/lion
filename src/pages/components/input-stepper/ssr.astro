@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="input-stepper-ssr">Input Stepper: SSR</h1>
+
+  <h2>Basic input stepper</h2>
+  <lion-input-stepper label="Amount"></lion-input-stepper>
+
+  <h2>With range</h2>
+  <lion-input-stepper label="Amount of oranges" min="200" max="500" step="100" value="200"></lion-input-stepper>
+
+  <h2>Disabled input stepper</h2>
+  <lion-input-stepper label="Amount" disabled></lion-input-stepper>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-input-stepper.js';
+  </script>
+</MainLayout>
+

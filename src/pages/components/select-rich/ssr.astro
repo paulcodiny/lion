@@ -1,0 +1,40 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="select-rich-ssr">Select Rich: SSR</h1>
+
+  <h2>Basic select rich</h2>
+  <lion-select-rich label="Favorite color" name="color">
+    <lion-option .choiceValue=${"red"}>Red</lion-option>
+    <lion-option .choiceValue=${"hotpink"} checked>Hotpink</lion-option>
+    <lion-option .choiceValue=${"teal"}>Teal</lion-option>
+  </lion-select-rich>
+
+  <h2>Options with HTML</h2>
+  <lion-select-rich label="Favorite color" name="color2">
+    <lion-option .choiceValue=${"red"}>
+      <p style="color: red;">I am red</p>
+    </lion-option>
+    <lion-option .choiceValue=${"hotpink"} checked>
+      <p style="color: hotpink;">I am hotpink</p>
+    </lion-option>
+    <lion-option .choiceValue=${"teal"}>
+      <p style="color: teal;">I am teal</p>
+    </lion-option>
+  </lion-select-rich>
+
+  <h2>Disabled select rich</h2>
+  <lion-select-rich label="Favorite color" name="color3" disabled>
+    <lion-option .choiceValue=${"red"}>Red</lion-option>
+    <lion-option .choiceValue=${"blue"}>Blue</lion-option>
+  </lion-select-rich>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-select-rich.js';
+    import '@lion/ui/define/lion-option.js';
+  </script>
+</MainLayout>
+

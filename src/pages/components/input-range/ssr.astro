@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+---
+<MainLayout>
+  <h1 id="input-range-ssr">Input Range: SSR</h1>
+
+  <h2>Basic input range</h2>
+  <lion-input-range style="max-width: 400px;" min="0" max="100" label="Input range"></lion-input-range>
+
+  <h2>With unit</h2>
+  <lion-input-range style="max-width: 400px;" min="0" max="100" unit="%" label="Percentage"></lion-input-range>
+
+  <h2>Disabled input range</h2>
+  <lion-input-range style="max-width: 400px;" disabled min="0" max="100" label="Input range"></lion-input-range>
+
+  <script>
+    import '@webcomponents/scoped-custom-element-registry';
+    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    import '@lion/ui/define/lion-input-range.js';
+  </script>
+</MainLayout>
+

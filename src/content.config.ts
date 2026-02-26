@@ -2,7 +2,7 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const lionComponents = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './docs/components' }),
+  loader: glob({ pattern: '**/*.md|**/.ssr.md', base: './docs/components' }),
 });
 
 const lionFundamentals = defineCollection({
